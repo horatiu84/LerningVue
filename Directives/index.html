@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VueJS Course</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+  </head>
+  <body>
+
+    <!-- v-cloak​
+    Used to hide un-compiled template until it is ready. 
+
+    In out case : 
+    Hide the element with the id of "app" until the Vue.js application is ready. -->
+
+    <div id="app" v-cloak>
+
+
+      <p>{{fullName}}</p>
+
+
+
+      <!-- v-bind:href="url" - is the long version -->
+      <p><a :href="url" target="_blank">Google</a></p>
+      <p v-html="raw_url"></p>
+      <p>{{ age }}</p>
+
+      <!-- the shorthand syntax for the v-bind directive, which is used to bind the value
+         of an attribute to a property on the component. In this case, the href attribute
+         of the anchor element is being bound to the url property on the component.
+       -->
+      <hr/>
+
+      
+      <label >First name</label>
+      <input type="text" v-model="firstName">
+
+      <!-- v-model directive is used to bind the value of the 'firstName' input element
+       to the firstName property of the data object. 
+       
+       The code can be read like this:
+       Bind the value of the input element with the type of "text" 
+       to the firstName property of the data object.
+      -->
+
+      <label for="">Middle name</label>
+      <input type="text" @keyup.enter="updateMiddleName">
+      <!--The @keyup.enter directive is a way of binding an event listener to the input element. 
+        In this case, it's binding an event listener that will call the updateMiddleName method
+        whenever the user presses the Enter key while focused on the input element. -->
+
+      <label >Last name</label>
+      <input type="text" :value="lastName"
+       @input.prevent="updateLastName('Last name event trigger!',$event)" >
+
+      <!--example of a two-way data binding in Vue.js. 
+        In this case, the value attribute of the input element is bound to the lastName property of the data object.
+        This means that whenever the value of the input element changes, the lastName property will also be updated. 
+
+        The @input event is a way of binding an event listener to the input element. In this case, it's binding 
+        an input event listener that will call the updateLastName method whenever the input element is changed.
+      
+        The @input.prevent directive is a way of binding an event listener to the input element. 
+        In this case, it's binding an input event listener that will call the updateLastName method 
+        whenever the input element is changed. The .prevent modifier tells Vue to call the default 
+        action of the event (in this case, the submission of the form) and then stop the propagation
+        of the event up the DOM tree. This means that the event will not be handled by parent elements,
+        which may have their own event listeners for the input event. 
+        The $event argument is a reference to the native DOM event that triggered the input event.
+      
+      
+      -->
+      <label >Age</label>
+      <input type="number" v-model.number="age">
+
+      <!-- The v-model.number directive is a way of binding the value of an input element with 
+        the type of "number" to a property on the component. In this case, it's binding the value 
+        of the input element to the age property of the data object. The .number modifier tells 
+        Vue to treat the value of the input element as a number, which means that any user input 
+        will be converted to a number before being assigned to the age property. 
+        This is useful when working with numeric data, as it ensures that the data is always 
+        represented as a number, even if the user enters a value that contains decimal points 
+        or other non-numeric characters. -->
+
+      <button type="button" v-on:click="increment">Increment</button>
+
+      <!--The v-on:click directive is a way of binding an event listener to a DOM element.
+         In this case, it's binding a click event listener to the button element. -->
+      <button type="button" @click.ctrl="age--">Decrement</button>
+    </div>
+
+    <!-- <div id="app2">
+      {{firstName}}
+      {{lastName}}
+    </div> -->
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <div id="app">
+    <label>
+      <input type="checkbox" v-model="isPurple" /> Purple
+    </label>
+    <!-- v-model directive that bind the isPurple property to the value of the input element. 
+      When the user checks or unchecks the checkbox, the value of the isPurple property will be updated accordingly.  -->
+
+    <select v-model="selectedColor">
+      <option value="">White</option>
+      <option value="text-black">Black</option>
+      <option value="text-orange">Orange</option>
+    </select>
+
+    <label >Cirlce size</label>
+    <input type="number" v-model="size">
+
+    <label >Rotation</label>
+    <input type="number" v-model="rotation">
+
+    
+    <label >Font size</label>
+    <input type="number" v-model="fontSize">
+
+    <div class="circle" :class="[selectedColor,circle_classes]"
+    :style="circle_style">
+      Hi!
+    </div>
+    <!-- :class directive to apply the selectedColor and circle_classes computed properties to the class attribute
+      of the div element. The circle_classes computed property returns an object that maps the "purple" key to the 
+      value of the isPurple property. The div element will have the "purple" class if the isPurple property is true,
+      and it will also have the class specified by the selectedColor property. 
+      In this case, the div element will have the "text-orange" class if the selectedColor property is "text-orange",
+      or it will have no classes if the selectedColor property is empty. -->
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

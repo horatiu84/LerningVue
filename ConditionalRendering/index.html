@@ -1,0 +1,36 @@
+<!DOCTYPE>
+<html>
+
+<head>
+  <title>VueJS Course</title>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+
+<body>
+  <div id="app">
+    <label for="modeV">Mode</label>
+    <select name="modeV" id="modeV" v-model="mode">
+      <option value="1">Mode 1</option>
+      <option value="2">Mode 2</option>
+      <option value="3">Mode 3</option>
+    </select>
+
+    <i v-show="mode==1">v-show</i>
+    <!-- the v-show directive to conditionally render the i element based on the value of the mode property.
+      The i element will be shown if the value of the mode property is 1, otherwise it will be hidden. -->
+
+      <p v-if="mode == 1">Showing v-if directive content!</p>
+        <!-- the v-if directive to conditionally render the p element based on the value of the mode property. 
+        The p element will be shown if the value of the mode property is 1, otherwise it will be removed. -->
+      <template v-else-if="mode==2">
+        <p>Bonus content</p>
+        <h3>v-else-if</h3>
+      </template>
+      <p v-else>v-else</p>
+    </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
